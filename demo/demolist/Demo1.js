@@ -20,7 +20,7 @@ const option = {
         gridUrl: 'https://mock.yonyoucloud.com/mock/358/commonRefsearch'
     },
     backdrop: false,
-    displayField: '{refname}-{recode}',//显示内容的键
+    displayField: '{refname}-{refcode}',//显示内容的键
     valueField: 'refpk',
     checkedArray: [
         { "refremark": "用友骨干", "refpk": "857c41b7-e1a3-11e5-aa70-0242ac11001d", "refcode": "wujd", "refname": "吴惊道" }, 
