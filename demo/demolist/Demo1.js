@@ -10,7 +10,7 @@ import 'ref-multiple-selection/dist/index.css';
 import Form from "bee-form";
 import {Button} from 'tinper-bee'
 const option = {
-    title: '多选',
+    title: '多选参照',
     param: {
         refCode: 'test_common',//test_common||test_grid||test_tree||test_treeTable
         tenantId: 'xxx',
