@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ref-multiple-selection 参照-左树右表(可多选)</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
+  </head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span3"><ul class="nav nav-list">
+    <li class="sidebar-header-2"><a href="#ref-multiple-selection-参照-左树右表(可多选)">ref-multiple-selection 参照-左树右表(可多选)</a></li>
+    <li class="sidebar-header-2"><a href="#效果">效果</a></li>
+    <li class="sidebar-header-2"><a href="#类型说明">类型说明</a></li>
+    <li class="sidebar-header-3"><a href="#refmultipleselection">RefMultipleSelection</a></li>
+    <li class="sidebar-header-3"><a href="#refmultipleselectionwithinput">RefMultipleSelectionWithInput</a></li>
+    <li class="sidebar-header-3"><a href="#createrefmultipleselection">createRefMultipleSelection</a></li>
+    <li class="sidebar-header-2"><a href="#api">API</a></li>
+    <li class="sidebar-header-2"><a href="#refmultipleselectionwithinput-增量-api">RefMultipleSelectionWithInput 增量 API</a></li>
+    <li class="sidebar-header-2"><a href="#参数详解">参数详解</a></li>
+    <li class="sidebar-header-2"><a href="#开发调试">开发调试</a></li>
+</ul>
+      </div>
+      <div class="span9 main"><h2 id="ref-multiple-selection-参照-左树右表(可多选)">ref-multiple-selection 参照-左树右表(可多选)</h2>
+<pre class="hljs"><code>具有多选功能的矩阵布局弹出参照，可多选</code></pre><pre class="hljs"><code>$ npm install ref-multiple-selection <span class="hljs-comment">--save</span>
+或
+$ ynpm install @yonyou/ref-multiple-selection <span class="hljs-comment">--save</span>
+
+引入
+
+<span class="hljs-keyword">import</span> {RefMultipleSelectionWithInput} <span class="hljs-keyword">from</span> <span class="hljs-string">'ref-multiple-selection'</span>;
+或
+<span class="hljs-keyword">import</span> {RefMultipleSelectionWithInput} <span class="hljs-keyword">from</span> <span class="hljs-string">'@yonyou/ref-multiple-selection'</span>;
+</code></pre><h2 id="效果">效果</h2>
+<h2 id="类型说明">类型说明</h2>
+<h3 id="refmultipleselection">RefMultipleSelection</h3>
+<pre class="hljs"><code>参照弹出窗，没有输入框，使用时可根据自己需要定义具体的文本框。</code></pre><h3 id="refmultipleselectionwithinput">RefMultipleSelectionWithInput</h3>
+<pre class="hljs"><code>带文本框的参照弹出窗。在 RefMultipleSelection 基础上封装实现。</code></pre><h3 id="createrefmultipleselection">createRefMultipleSelection</h3>
+<p>   非 ReactJS 调用方式，与 RefMultipleSelection 相同没有输入框，使用时可根据自己需要定义具体的文本框。</p>
+<h2 id="api">API</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+<th>必选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td>空</td>
+<td>打开上传的模态框显示的标题文字</td>
+<td>否</td>
+</tr>
+<tr>
+<td>className</td>
+<td><code>string</code></td>
+<td>空</td>
+<td>参照class样式，作用于弹出层和 RefMultipleSelectionWithInput 输入框的样式，默认为空。</td>
+<td>否</td>
+</tr>
+<tr>
+<td>searchable</td>
+<td><code>bool</code></td>
+<td>true</td>
+<td>是否显示搜索框，弹出层是否带有搜索框，true 显示，false 不显示。</td>
+<td>否</td>
+</tr>
+<tr>
+<td>emptyBtn</td>
+<td><code>bool</code></td>
+<td>true</td>
+<td>是否显示清空按钮，true 显示，false 不显示</td>
+<td>否</td>
+</tr>
+<tr>
+<td>multiple</td>
+<td><code>bool</code></td>
+<td>false</td>
+<td>是否单选， true 单选，false 多选</td>
+<td>否</td>
+</tr>
+<tr>
+<td>backdrop</td>
+<td><code>bool</code></td>
+<td>true</td>
+<td>弹出层是否有模态层，true 显示，false 不显示</td>
+<td>否</td>
+</tr>
+<tr>
+<td>buttons</td>
+<td><code>object</code></td>
+<td><code>okText</code>: &quot;确认&quot;, //确认按钮<br/><code>cancelText</code>: &quot;取消&quot;, //取消按钮<br/><code>clearText</code>: &quot;清空已选&quot; //清空已选按钮</td>
+<td>弹出层工具栏三个按钮的文字，若 bottomButton 为  false 则该配置无效。</td>
+<td>否</td>
+</tr>
+<tr>
+<td>bottomButton</td>
+<td><code>bool</code></td>
+<td>true</td>
+<td>是否显示弹出层下边框工具栏， false true 显示<code>注意该属性为临时兼容配置后期可能随时会弃用</code></td>
+<td>否</td>
+</tr>
+<tr>
+<td>param</td>
+<td><code>objecet</code></td>
+<td>{}</td>
+<td>接口请求参数</td>
+<td>是</td>
+</tr>
+<tr>
+<td>refModelUrl</td>
+<td><code>object</code></td>
+<td>{gridUrl: &#39;&#39;}</td>
+<td>弹出层数据接口地址，为了兼容其他参照保留了多连接配置。</td>
+<td>是</td>
+</tr>
+<tr>
+<td>onSave</td>
+<td><code>function( record:object )</code></td>
+<td>--</td>
+<td>保存回调函数，返回已选择的记录详细数据。</td>
+<td>否</td>
+</tr>
+<tr>
+<td>onCancel `</td>
+<td>function(  )`</td>
+<td>--</td>
+<td>关闭弹出层</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h2 id="refmultipleselectionwithinput-增量-api">RefMultipleSelectionWithInput 增量 API</h2>
+<blockquote>
+<p><span style="color: red; font-size: 15px;">注意:以下参数为 <code><code>&lt;RefMultipleSelectionWithInput/&gt;</code></code> 独有。对其他两个类型的引用无效。</span></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+<th>必选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>displayField</td>
+<td><code>string 或 function</code></td>
+<td>&#39;{refname}&#39;</td>
+<td>记录中显示的键。<br/>当为字符串时则会根据<code>{}</code>包裹的增则匹配替换。<br/>如：<code>&#39;人员姓名：{refname}，编号：{refcode}&#39;</code><br/>当为函数时则需自定义返回内容，参数为迭代已选择的记录。<br/>如：<br/>displayField: (record)=&gt;  ${record.refname}-${record.refname}</td>
+<td>否</td>
+</tr>
+<tr>
+<td>valueField</td>
+<td><code>string</code></td>
+<td>&#39;refcode&#39;</td>
+<td>待提交的 value 的键。</td>
+<td>否</td>
+</tr>
+<tr>
+<td>checkedArray</td>
+<td><code>array</code></td>
+<td>[]</td>
+<td>已选的数据详细记录，此配置为本地配置不做缓存不做服务器校验。`</td>
+<td>否</td>
+</tr>
+<tr>
+<td>matchUrl</td>
+<td><code>string</code></td>
+<td>空</td>
+<td>查询并校验 checkedArray 中的 valueField 对应参照的详细记录。</td>
+<td>否</td>
+</tr>
+<tr>
+<td>rules</td>
+<td><code>array</code></td>
+<td>[]</td>
+<td>表单校验规则，参考 rc-from，或使用的 from 组件具体的校验规则写法。`如： rules：[{required: true, message: &#39;请选择该引用&#39;,}]</td>
+<td>否</td>
+</tr>
+<tr>
+<td>form</td>
+<td><code>form：object</code></td>
+<td>{}</td>
+<td>当前表单的 form 对象。</td>
+<td>否.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参数详解">参数详解</h2>
+<pre class="hljs"><code>eg:
+
+checkedArray:
+<span class="hljs-comment">//需要组装出详细记录，但只要保证 displayField 和 valueField 所标记的字段存在即可， 如：</span>
+[
+    { <span class="hljs-string">"refpk"</span>: <span class="hljs-string">"857c41b"</span>,<span class="hljs-string">"refcode"</span>: <span class="hljs-string">"wujd"</span>, <span class="hljs-string">"refname"</span>: <span class="hljs-string">"吴惊道"</span> },
+    { <span class="hljs-string">"refpk"</span>: <span class="hljs-string">"65c2c42"</span>, <span class="hljs-string">"refcode"</span>: <span class="hljs-string">"ms"</span>, <span class="hljs-string">"refname"</span>: <span class="hljs-string">"马帅"</span> }
+]
+
+refModelUrl:{
+<span class="hljs-comment">// gridUrl 为 ref-multiple-selection 的数据来源。</span>
+    gridUrl: <span class="hljs-string">'http://workbench.yyuap.com/ref/rest/iref_ctr/commonRefsearch'</span>
+}</code></pre><h2 id="开发调试">开发调试</h2>
+<pre class="hljs"><code>
+$ <span class="hljs-built_in">cd</span> 
+
+ac-refer/packages/ref-multiple-selection
+
+$ npm install
+
+$ npm run dev
+</code></pre>      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>
